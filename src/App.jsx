@@ -4,18 +4,19 @@ import Timer from "./Timer";
 import Settings from "./Settings";
 import WorkoutContext from "./WorkoutContext";
 import { useState } from "react";
+import Workout from "./Workout";
 
 const App = () => {
   const [workSeconds, setWorkSeconds] = useState(45);
   const [breakSeconds, setBreakSeconds] = useState(15);
-  const workout = [
+  const [workout, setWorkout] = useState([
     "Chest Press",
     "Chest Press",
     "Chest Fly",
     "Chest Fly",
     "Jog In Place",
     "Jumping Jacks",
-  ];
+  ]);
 
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ const App = () => {
           setWorkSeconds,
           setBreakSeconds,
           workout,
+          setWorkout,
         }}
       >
         <main>
@@ -34,6 +36,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Timer />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/workout" element={<Workout />} />
             </Routes>
           </div>
         </main>

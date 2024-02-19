@@ -3,6 +3,7 @@ import { useContext } from "react";
 import BackButton from "./BackButton";
 import WorkoutContext from "./WorkoutContext";
 import { Link } from "react-router-dom";
+import CreateWorkoutButton from "./CreateWorkoutButton";
 
 function Settings() {
   const workoutInfo = useContext(WorkoutContext);
@@ -32,6 +33,9 @@ function Settings() {
         max={120}
       />
       <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Link to={"/workout"}>
+          <CreateWorkoutButton />
+        </Link>
         <Link to={"/"}>
           <BackButton />
         </Link>
