@@ -4,6 +4,7 @@ import PlayButton from "./PlayButton";
 import PauseButton from "./PauseButton";
 import workSound from "./Sounds/beep.mp3";
 import restSound from "./Sounds/buzzer.mp3";
+import startSound from "./Sounds/start.mp3";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Howl } from "howler";
 import SettingsButton from "./SettingsButton";
@@ -23,6 +24,7 @@ const Timer = () => {
 
   const beep = new Howl({ src: [workSound] });
   const buzzer = new Howl({ src: [restSound] });
+  const start = new Howl({ src: [startSound] });
 
   function initTimer() {
     setSecondsLeft(workoutInfo.workSeconds);
@@ -52,15 +54,23 @@ const Timer = () => {
     beep.play();
   }
 
+  function playStart() {
+    start.play();
+  }
+
   useEffect(() => {
     initTimer();
     const interval = setInterval(() => {
       if (isPausedRef.current) {
         return;
       }
+      if (workoutInfo.workout.length == indexRef.current) {
+        setIsPaused(true);
+        isPausedRef.current = true;
+        return;
+      }
       if (secondsLeftRef.current === 0) {
         if (modeRef.current === "work") {
-          console.log("Inside", mode);
           const nextIndex = indexRef.current + 1;
           setIndexToUse(nextIndex);
           indexRef.current = nextIndex;
@@ -80,13 +90,22 @@ const Timer = () => {
   let seconds = secondsLeft;
   if (seconds < 10) seconds = "0" + seconds;
 
-  console.log(indexToUse);
-
   return (
     <div>
       <h2 className="exercise">
-        {mode === "work" ? workoutInfo.workout[indexToUse] : "Rest"}
+        {workoutInfo.workout.length > indexToUse
+          ? mode === "work"
+            ? workoutInfo.workout[indexToUse]
+            : "Rest"
+          : "Great Job!!"}
       </h2>
+      <h3>
+        {workoutInfo.workout[indexToUse] == undefined
+          ? null
+          : mode === "break"
+          ? `(up next: ${workoutInfo.workout[indexToUse]})`
+          : null}
+      </h3>
       <CircularProgressbar
         value={percentage}
         text={`${seconds}`}
@@ -100,8 +119,11 @@ const Timer = () => {
         {isPaused ? (
           <PlayButton
             onClick={() => {
-              setIsPaused(false);
-              isPausedRef.current = false;
+              playStart();
+              setTimeout(() => {
+                setIsPaused(false);
+                isPausedRef.current = false;
+              }, 3500);
             }}
           />
         ) : (
