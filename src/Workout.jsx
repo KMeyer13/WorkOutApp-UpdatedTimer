@@ -2,16 +2,15 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import WorkoutContext from "./WorkoutContext";
 import BackButton from "./BackButton";
-import AddExerciseButton from "./AddExerciseButton";
 
 function Workout() {
   const workoutInfo = useContext(WorkoutContext);
   let newWorkout = [...workoutInfo.workout];
 
   const addExercise = (obj) => {
-    newWorkout.push(obj.exercise);
-    workoutInfo.setWorkout(newWorkout);
     if (obj.set > 1) {
+      newWorkout.push(obj.exercise);
+      workoutInfo.setWorkout(newWorkout);
       obj.set -= 1;
       addExercise(obj);
     }
