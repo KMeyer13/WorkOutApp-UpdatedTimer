@@ -1,0 +1,76 @@
+body{
+  background-color: darkslategray;
+  color: whitesmoke;
+}
+
+main {
+  padding-top: 50px;
+  max-width: 340px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+button {
+  display: inline-block;
+  background-color: transparent;
+  color: whitesmoke;
+  border: 0;
+  height: 100px;
+  width: 100px;;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button.with-text{
+  width: auto;
+  background-color: slategray;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+  line-height: 36px;
+  height: 60px;
+}
+
+button.with-text svg{
+  width: 36px;
+  float: left;
+  margin-right: 5px;
+}
+
+label{
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.slider-red{
+  border: 2px solid red;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.thumb-red{
+  background-color: red;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.slider-green{
+  border: 2px solid green;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.thumb-green{
+  background-color: green;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.exercise{
+  font-size: 4rem;
+}
