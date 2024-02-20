@@ -1,14 +1,14 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Timer from "./Timer";
-import Settings from "./Settings";
-import WorkoutContext from "./WorkoutContext";
+import Timer from "./components/Timer";
+import Settings from "./components/Settings";
+import WorkoutContext from "./context/WorkoutContext";
 import { useState } from "react";
-import Workout from "./Workout";
+import Workout from "./components/Workout";
 
 const App = () => {
   const [workSeconds, setWorkSeconds] = useState(45);
-  const [breakSeconds, setBreakSeconds] = useState(15);
+  const [restSeconds, setRestSeconds] = useState(15);
   const [workout, setWorkout] = useState([
     "Chest Press",
     "Chest Press",
@@ -23,9 +23,9 @@ const App = () => {
       <WorkoutContext.Provider
         value={{
           workSeconds,
-          breakSeconds,
+          restSeconds,
           setWorkSeconds,
-          setBreakSeconds,
+          setRestSeconds,
           workout,
           setWorkout,
         }}

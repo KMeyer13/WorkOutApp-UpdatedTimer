@@ -1,15 +1,15 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import PlayButton from "./PlayButton";
-import PauseButton from "./PauseButton";
-import workSound from "./Sounds/beep.mp3";
-import restSound from "./Sounds/buzzer.mp3";
-import startSound from "./Sounds/start.mp3";
+import PlayButton from "../buttons/PlayButton";
+import PauseButton from "../buttons/PauseButton";
+import workSound from "../sounds/beep.mp3";
+import restSound from "../sounds/buzzer.mp3";
+import startSound from "../sounds/start.mp3";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Howl } from "howler";
-import SettingsButton from "./SettingsButton";
+import SettingsButton from "../buttons/SettingsButton";
 import { Link } from "react-router-dom";
-import WorkoutContext from "./WorkoutContext";
+import WorkoutContext from "../context/WorkoutContext";
 
 const Timer = () => {
   const workoutInfo = useContext(WorkoutContext);
@@ -31,13 +31,13 @@ const Timer = () => {
   }
 
   function switchMode() {
-    const nextMode = modeRef.current === "work" ? "break" : "work";
+    const nextMode = modeRef.current === "work" ? "rest" : "work";
     modeRef.current === "work" ? playBeep() : playBuzzer();
     setMode(nextMode);
     modeRef.current = nextMode;
 
     const nextSeconds =
-      nextMode === "work" ? workoutInfo.workSeconds : workoutInfo.breakSeconds;
+      nextMode === "work" ? workoutInfo.workSeconds : workoutInfo.restSeconds;
     setSecondsLeft(nextSeconds);
     secondsLeftRef.current = nextSeconds;
   }
@@ -83,7 +83,7 @@ const Timer = () => {
   }, [workoutInfo]);
 
   const totalSeconds =
-    mode === "work" ? workoutInfo.workSeconds : workoutInfo.breakSeconds;
+    mode === "work" ? workoutInfo.workSeconds : workoutInfo.restSeconds;
 
   const percentage = Math.round((secondsLeft / totalSeconds) * 100);
 
@@ -102,7 +102,7 @@ const Timer = () => {
       <h3>
         {workoutInfo.workout[indexToUse] == undefined
           ? null
-          : mode === "break"
+          : mode === "rest"
           ? `(up next: ${workoutInfo.workout[indexToUse]})`
           : null}
       </h3>
