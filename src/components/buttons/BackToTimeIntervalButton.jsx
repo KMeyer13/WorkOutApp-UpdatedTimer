@@ -1,4 +1,4 @@
-function BackButton(props) {
+function BackToTimeIntervalButton(props) {
   return (
     <button {...props} className="with-text">
       <svg
@@ -13,9 +13,9 @@ function BackButton(props) {
           clip-rule="evenodd"
         />
       </svg>
-      Back
+      Back To Time Intervals
     </button>
   );
 }
 
-export default BackButton;
+export default BackToTimeIntervalButton;

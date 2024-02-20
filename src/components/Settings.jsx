@@ -1,9 +1,9 @@
 import ReactSlider from "react-slider";
 import { useContext } from "react";
-import BackButton from "../buttons/BackButton";
 import WorkoutContext from "../context/WorkoutContext";
 import { Link } from "react-router-dom";
-import CreateWorkoutButton from "../buttons/CreateWorkoutButton";
+import CreateWorkoutButton from "./buttons/CreateWorkoutButton";
+import BackToTimerButton from "./buttons/BackToTimerButton";
 
 function Settings() {
   const workoutInfo = useContext(WorkoutContext);
@@ -39,7 +39,7 @@ function Settings() {
             <CreateWorkoutButton />
           </Link>
           <Link to={"/"}>
-            <BackButton />
+            <BackToTimerButton />
           </Link>
         </div>
       </div>

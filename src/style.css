@@ -48,6 +48,7 @@ label{
   border: 2px solid red;
   height: 40px;
   border-radius: 20px;
+  background-color: black;
 }
 
 .thumb-red{
@@ -62,6 +63,7 @@ label{
   border: 2px solid green;
   height: 40px;
   border-radius: 20px;
+  background-color: black;
 }
 
 .thumb-green{
