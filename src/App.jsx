@@ -17,7 +17,9 @@ const App = () => {
     "Jog In Place",
     "Jumping Jacks",
   ]);
-
+  const [totalWorkoutTime, setTotalWorkoutTime] = useState(
+    workout.length * workSeconds + workout.length * restSeconds
+  );
   return (
     <BrowserRouter>
       <WorkoutContext.Provider
@@ -28,6 +30,8 @@ const App = () => {
           setRestSeconds,
           workout,
           setWorkout,
+          totalWorkoutTime,
+          setTotalWorkoutTime,
         }}
       >
         <main>

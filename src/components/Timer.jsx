@@ -1,6 +1,6 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import PlayButton from "../components/buttons/PlayButton"
+import PlayButton from "../components/buttons/PlayButton";
 import PauseButton from "../components/buttons/PauseButton";
 import workSound from "../sounds/beep.mp3";
 import restSound from "../sounds/buzzer.mp3";
@@ -17,10 +17,13 @@ const Timer = () => {
   const [isPaused, setIsPaused] = useState(true);
   const [indexToUse, setIndexToUse] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(workoutInfo.workSeconds);
+  const [timeleft, setTimeLeft] = useState(workoutInfo.totalWorkoutTime);
+
   const secondsLeftRef = useRef(secondsLeft);
   const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
   const indexRef = useRef(indexToUse);
+  const timeLeftRef = useRef(timeleft);
 
   const beep = new Howl({ src: [workSound] });
   const buzzer = new Howl({ src: [restSound] });
@@ -44,6 +47,7 @@ const Timer = () => {
 
   function tick() {
     setSecondsLeft(secondsLeftRef.current--);
+    setTimeLeft(timeLeftRef.current--);
   }
 
   function playBuzzer() {
@@ -115,6 +119,12 @@ const Timer = () => {
           trailColor: "grey",
         })}
       />
+      <div>
+        <h3>
+          Total Time Left : {Math.floor(timeleft / 60)}:
+          {timeleft % 60 < 10 ? `0${timeleft % 60}` : timeleft % 60}
+        </h3>
+      </div>
       <div>
         {isPaused ? (
           <PlayButton

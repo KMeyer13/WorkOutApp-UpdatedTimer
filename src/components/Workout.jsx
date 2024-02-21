@@ -13,10 +13,8 @@ function Workout() {
       newWorkout.push(obj.exercise);
       workoutInfo.setWorkout(newWorkout);
       obj.set -= 1;
-      console.log(obj.set);
       addExercise(obj);
     }
-    console.log(newWorkout);
   };
 
   return (
@@ -36,13 +34,21 @@ function Workout() {
             document.getElementById("WorkoutForm").reset();
           }}
         >
-          <label htmlFor="exercise">
+          <label className="heading" htmlFor="exercise">
             Exercise:
-            <input id="exercise" name="exercise" placeholder="exercise" />
+            <div className="workoutInput">
+              <input
+                id="exercise"
+                name="exercise"
+                placeholder="What exercise?"
+              />
+            </div>
           </label>
-          <label htmlFor="sets">
+          <label className="heading" htmlFor="sets">
             Sets:
-            <input id="sets" name="sets" placeholder="sets" />
+            <div className="workoutInput">
+              <input id="sets" name="sets" placeholder="How many sets?" />
+            </div>
           </label>
           <AddExerciseButton />
         </form>
@@ -52,7 +58,7 @@ function Workout() {
           <BackToTimeIntervalButton />
         </Link>
       </div>
-      <div>
+      <div className="workoutPlan">
         <h4>Workout Plan:</h4>
         {newWorkout.map((exercise) => (
           <p>{exercise}</p>

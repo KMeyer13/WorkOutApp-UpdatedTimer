@@ -11,14 +11,20 @@ function Settings() {
   return (
     <div>
       <h2>Time Intervals</h2>
-      <div style={{ textAlign: "left" }}>
+      <div className="heading">
         <label>Work: {workoutInfo.workSeconds}</label>
         <ReactSlider
           className="slider-red"
           thumbClassName="thumb-red"
           trackClassName="track"
           value={workoutInfo.workSeconds}
-          onChange={(newValue) => workoutInfo.setWorkSeconds(newValue)}
+          onChange={(newValue) => {
+            workoutInfo.setWorkSeconds(newValue);
+            workoutInfo.setTotalWorkoutTime(
+              workoutInfo.workout.length * newValue +
+                workoutInfo.workout.length * workoutInfo.restSeconds
+            );
+          }}
           min={1}
           max={120}
         />
@@ -30,11 +36,24 @@ function Settings() {
           value={workoutInfo.restSeconds}
           onChange={(newValue) => {
             workoutInfo.setRestSeconds(newValue);
+            workoutInfo.setTotalWorkoutTime(
+              workoutInfo.workout.length * workoutInfo.workSeconds +
+                workoutInfo.workout.length * newValue
+            );
           }}
           min={1}
           max={120}
         />
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <div className="totalWorkoutTime">
+          <h3>
+            Total Workout Time : {Math.floor(workoutInfo.totalWorkoutTime / 60)}
+            :
+            {workoutInfo.totalWorkoutTime % 60 < 10
+              ? `0${workoutInfo.totalWorkoutTime % 60}`
+              : workoutInfo.totalWorkoutTime % 60}
+          </h3>
+        </div>
+        <div className="settingsPageButtons">
           <Link to={"/workout"}>
             <CreateWorkoutButton />
           </Link>
