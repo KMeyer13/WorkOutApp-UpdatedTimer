@@ -14,6 +14,10 @@ function Workout() {
       workoutInfo.setWorkout(newWorkout);
       obj.set -= 1;
       addExercise(obj);
+      workoutInfo.setTotalWorkoutTime(
+        newWorkout.length * workoutInfo.workSeconds +
+          newWorkout.length * workoutInfo.restSeconds
+      );
     }
   };
 
@@ -60,6 +64,12 @@ function Workout() {
       </div>
       <div className="workoutPlan">
         <h4>Workout Plan:</h4>
+        <h4>
+          Total Workout Time : {Math.floor(workoutInfo.totalWorkoutTime / 60)}:
+          {workoutInfo.totalWorkoutTime % 60 < 10
+            ? `0${workoutInfo.totalWorkoutTime % 60}`
+            : workoutInfo.totalWorkoutTime % 60}
+        </h4>
         {newWorkout.map((exercise) => (
           <p>{exercise}</p>
         ))}
