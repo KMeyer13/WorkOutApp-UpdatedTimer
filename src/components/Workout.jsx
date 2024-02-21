@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import WorkoutContext from "../context/WorkoutContext";
-import AddExerciseButton from "./buttons/AddExerciseButton";
-import BackToTimeIntervalButton from "./buttons/BackToTimeIntervalButton";
+import AddExerciseButton from "../components/buttons/AddExerciseButton";
+import BackToTimeIntervalButton from "../components/buttons/BackToTimeIntervalButton";
 
 function Workout() {
   const workoutInfo = useContext(WorkoutContext);

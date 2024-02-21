@@ -1,13 +1,13 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import PlayButton from "../buttons/PlayButton";
-import PauseButton from "../buttons/PauseButton";
+import PlayButton from "../components/buttons/PlayButton"
+import PauseButton from "../components/buttons/PauseButton";
 import workSound from "../sounds/beep.mp3";
 import restSound from "../sounds/buzzer.mp3";
 import startSound from "../sounds/start.mp3";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Howl } from "howler";
-import SettingsButton from "../buttons/SettingsButton";
+import SettingsButton from "../components/buttons/SettingsButton";
 import { Link } from "react-router-dom";
 import WorkoutContext from "../context/WorkoutContext";
 

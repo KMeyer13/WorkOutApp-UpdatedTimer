@@ -2,8 +2,8 @@ import ReactSlider from "react-slider";
 import { useContext } from "react";
 import WorkoutContext from "../context/WorkoutContext";
 import { Link } from "react-router-dom";
-import CreateWorkoutButton from "./buttons/CreateWorkoutButton";
-import BackToTimerButton from "./buttons/BackToTimerButton";
+import CreateWorkoutButton from "../components/buttons/CreateWorkoutButton";
+import BackToTimerButton from "../components/buttons/BackToTimerButton";
 
 function Settings() {
   const workoutInfo = useContext(WorkoutContext);
