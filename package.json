@@ -1,10 +1,10 @@
 {
+  "homepage": "https://kmeyer13.github.io/WorkOutApp-UpdatedTimer/",
   "name": "workoutapp",
   "version": "1.0.0",
   "description": "React Template",
   "main": "index.js",
   "type": "module",
-  "homepage": "https://kmeyer13.github.io/WorkOutApp-UpdatedTimer/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.{js,ksx}\"",
@@ -13,7 +13,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d src/dist"
   },
   "keywords": [],
   "author": "",
