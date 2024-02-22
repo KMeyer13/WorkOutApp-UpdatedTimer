@@ -1,9 +1,10 @@
 {
-  "homepage": "https://kmeyer13.github.io/WorkOutApp-UpdatedTimer/",
-  "name": "WorkOutApp",
+  "name": "workoutapp",
   "version": "1.0.0",
   "description": "React Template",
   "main": "index.js",
+  "type": "module",
+  "homepage": "https://kmeyer13.github.io/WorkOutApp-UpdatedTimer/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.{js,ksx}\"",
