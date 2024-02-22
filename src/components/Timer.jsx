@@ -59,7 +59,6 @@ const Timer = () => {
   }
 
   function playStart() {
-    console.log("Woo Hoo!");
     start.play();
   }
 
