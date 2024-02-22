@@ -1,5 +1,6 @@
 {
-  "name": "reacttemplate",
+  "homepage": "https://kmeyer13.github.io/WorkOutApp-UpdatedTimer/",
+  "name": "WorkOutApp",
   "version": "1.0.0",
   "description": "React Template",
   "main": "index.js",
@@ -10,7 +11,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
