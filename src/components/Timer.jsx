@@ -25,9 +25,9 @@ const Timer = () => {
   const indexRef = useRef(indexToUse);
   const timeLeftRef = useRef(timeleft);
 
-  const beep = new Howl({ src: [workSound] });
-  const buzzer = new Howl({ src: [restSound] });
-  const start = new Howl({ src: [startSound] });
+  const beep = new Howl({ src: [workSound], html5: true });
+  const buzzer = new Howl({ src: [restSound], html5: true });
+  const start = new Howl({ src: [startSound], html5: true });
 
   function initTimer() {
     setSecondsLeft(workoutInfo.workSeconds);
