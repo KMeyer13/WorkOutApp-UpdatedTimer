@@ -47,7 +47,9 @@ const Timer = () => {
 
   function tick() {
     setSecondsLeft(secondsLeftRef.current--);
-    setTimeLeft(timeLeftRef.current--);
+    timeLeftRef.current == 0
+      ? setTimeLeft(0)
+      : setTimeLeft(timeLeftRef.current--);
   }
 
   function playBuzzer() {
@@ -68,9 +70,15 @@ const Timer = () => {
       if (isPausedRef.current) {
         return;
       }
-      if (workoutInfo.workout.length == indexRef.current) {
+      if (
+        workoutInfo.workout.length == indexRef.current &&
+        modeRef.current == "work"
+      ) {
+        tick();
+        setSecondsLeft(0);
         setIsPaused(true);
         isPausedRef.current = true;
+        playBeep();
         return;
       }
       if (secondsLeftRef.current === 0) {
