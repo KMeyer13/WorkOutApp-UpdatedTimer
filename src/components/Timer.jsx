@@ -178,8 +178,8 @@ const Timer = () => {
           <PauseButton
             onClick={() => {
               setIsPaused(true);
-              requestWakeLockRelease();
               isPausedRef.current = true;
+              requestWakeLockRelease();
             }}
           />
         )}
