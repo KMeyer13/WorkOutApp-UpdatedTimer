@@ -87,6 +87,12 @@ const Timer = () => {
     }
   };
 
+  const requestWakeLockRelease = () => {
+    wakeLock?.release().then(() => {
+      console.log("Screen Wake Lock was released on component unmount");
+    });
+  };
+
   useEffect(() => {
     initTimer();
     const interval = setInterval(() => {
@@ -172,6 +178,7 @@ const Timer = () => {
           <PauseButton
             onClick={() => {
               setIsPaused(true);
+              requestWakeLockRelease();
               isPausedRef.current = true;
             }}
           />
