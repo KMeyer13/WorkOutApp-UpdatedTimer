@@ -64,6 +64,29 @@ const Timer = () => {
     start.play();
   }
 
+  const requestWakeLock = async () => {
+    if ("wakeLock" in navigator) {
+      try {
+        wakeLock = await navigator.wakeLock.request("screen");
+        console.log("Screen Wake Lock is active");
+
+        wakeLock.addEventListener("release", () => {
+          console.log("Screen Wake Lock was released");
+        });
+
+        document.addEventListener("visibilitychange", async () => {
+          if (wakeLock !== null && document.visibilityState === "visible") {
+            wakeLock = await navigator.wakeLock.request("screen");
+          }
+        });
+      } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+      }
+    } else {
+      console.log("Screen Wake Lock API not supported.");
+    }
+  };
+
   useEffect(() => {
     initTimer();
     const interval = setInterval(() => {
@@ -138,6 +161,7 @@ const Timer = () => {
           <PlayButton
             onClick={() => {
               playStart();
+              requestWakeLock();
               setTimeout(() => {
                 setIsPaused(false);
                 isPausedRef.current = false;
