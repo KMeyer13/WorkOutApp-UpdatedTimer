@@ -14,6 +14,7 @@ const App = () => {
     "Chest Press",
     "Shark Crunches",
     "Rear Delt Fly",
+    "Rotational CUrls",
     "Pause Squats",
     "Shoulder Press",
     "Jump Rope",
@@ -24,10 +25,12 @@ const App = () => {
     "Lateral Raises",
     "Hammer Curls",
     "Sumo Squats",
+    "Dips",
     "Toe Taps",
     "Chest Press",
     "Shark Crunches",
     "Rear Delt Fly",
+    "Rotational CUrls",
     "Pause Squats",
     "Shoulder Press",
     "Jump Rope",
@@ -38,6 +41,7 @@ const App = () => {
     "Lateral Raises",
     "Hammer Curls",
     "Sumo Squats",
+    "Dips",
     "Toe Taps",
   ]);
   const [totalWorkoutTime, setTotalWorkoutTime] = useState(
