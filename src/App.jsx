@@ -1,10 +1,10 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 import WorkoutContext from "./context/WorkoutContext";
-import { useState } from "react";
 import Workout from "./components/Workout";
 
 const App = () => {
@@ -47,6 +47,13 @@ const App = () => {
   const [totalWorkoutTime, setTotalWorkoutTime] = useState(
     workout.length * workSeconds + workout.length * restSeconds
   );
+
+  useEffect(() => {
+    fetch("http://localhost:5174/workouts")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <BrowserRouter>
       <WorkoutContext.Provider
